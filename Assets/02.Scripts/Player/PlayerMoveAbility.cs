@@ -1,10 +1,7 @@
 using UnityEngine;
 
-public class PlayerMoveAbility : MonoBehaviour
+public class PlayerMoveAbility : PlayerAbility
 {
-    public float MoveSpeed = 7f;
-    
-    public float JumpForce = 2.5f;
     
     private const float GRAVITY = 9.8f;
     private float _yVeocity = 0f;
@@ -21,7 +18,7 @@ public class PlayerMoveAbility : MonoBehaviour
     //    - 인스펙터 옵션 1. 순차적 ( 1 -> 2 -> 3 -> 1)
     //    -        옵션 2. 랜덤   (랜덤)
     
-    private void Awake()
+    private void Start()
     {
         _characterController = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
@@ -41,13 +38,14 @@ public class PlayerMoveAbility : MonoBehaviour
         _animator.SetFloat("Move", direction.magnitude);
 
         _yVeocity -= GRAVITY * Time.deltaTime;
-        direction.y = _yVeocity;
         
         if (Input.GetKey(KeyCode.Space) && _characterController.isGrounded)
         {
-            _yVeocity = JumpForce;
+            _yVeocity = _owner.Stat.JumpPower;
         }
         
-        _characterController.Move(direction * Time.deltaTime * MoveSpeed);
+        direction.y = _yVeocity;
+        
+        _characterController.Move(direction * Time.deltaTime * _owner.Stat.MoveSpeed);
     }
 }

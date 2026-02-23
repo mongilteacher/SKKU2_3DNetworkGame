@@ -1,13 +1,12 @@
 using UnityEngine;
 
-public class PlayerAttackAbility : MonoBehaviour
+public class PlayerAttackAbility : PlayerAbility
 {
     private Animator _animator;
 
     [SerializeField] private EAnimationSequenceType _animationSequenceType;
 
     private int _prevAnimationNumber = 0;
-    private const float ATTACK_COOLTIME = 0.6f;
     private float _attackTimer = 0f;
 
     private void Start()
@@ -19,7 +18,7 @@ public class PlayerAttackAbility : MonoBehaviour
     {
         _attackTimer += Time.deltaTime;
 
-        if (Input.GetMouseButton(0) && _attackTimer >= ATTACK_COOLTIME)
+        if (Input.GetMouseButton(0) && _attackTimer >= _owner.Stat.AttackSpeed)
         {
             _attackTimer = 0f;
 
