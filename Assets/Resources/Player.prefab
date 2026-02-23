@@ -1420,8 +1420,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1431130193902516458}
-  - component: {fileID: 3599220682620016255}
   - component: {fileID: 6865772916230939004}
+  - component: {fileID: 3599220682620016255}
   - component: {fileID: 5863999890395223045}
   - component: {fileID: 3576293628258372349}
   - component: {fileID: 5614310184388127677}
@@ -1457,28 +1457,6 @@ Transform:
   - {fileID: 4022314059200648696}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -151.61, z: 0}
---- !u!95 &3599220682620016255
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4902418581628224342}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 0308cf4e83cf517488b60af58b290fe0, type: 3}
-  m_Controller: {fileID: 9100000, guid: 350cce3d00374854a9a9615523931028, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!143 &6865772916230939004
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1504,6 +1482,28 @@ CharacterController:
   m_SkinWidth: 0.01
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.75, z: 0}
+--- !u!95 &3599220682620016255
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4902418581628224342}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 0308cf4e83cf517488b60af58b290fe0, type: 3}
+  m_Controller: {fileID: 9100000, guid: 350cce3d00374854a9a9615523931028, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &5863999890395223045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1554,6 +1554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f275e4794d8b0f248aa9c4f2d53bf222, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  PhotonView: {fileID: 0}
   Stat:
     MoveSpeed: 5
     JumpPower: 2.5

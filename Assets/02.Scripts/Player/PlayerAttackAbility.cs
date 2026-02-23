@@ -16,6 +16,8 @@ public class PlayerAttackAbility : PlayerAbility
     
     private void Update()
     {
+        if (!_owner.PhotonView.IsMine) return;
+
         _attackTimer += Time.deltaTime;
 
         if (Input.GetMouseButton(0) && _attackTimer >= _owner.Stat.AttackSpeed)

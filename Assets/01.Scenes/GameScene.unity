@@ -16068,6 +16068,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 887693609601475756, guid: a86e343f2e40d584e888f16d051c9adb, type: 3}
+      propertyPath: m_SynchronizeLayers.Array.data[0].SynchronizeType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1431130193902516458, guid: a86e343f2e40d584e888f16d051c9adb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.2430863

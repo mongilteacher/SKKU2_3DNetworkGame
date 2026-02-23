@@ -22,6 +22,7 @@ public class PhotonServerManager : MonoBehaviourPunCallbacks
         PhotonNetwork.GameVersion = _version;
         PhotonNetwork.NickName = _nickname;
 
+        // TCP/UDP : 빈신뢰성
         PhotonNetwork.SendRate          = 30; // 얼마나 자주 데이터를 송수신할 것인가..  (실제 송수신)
         PhotonNetwork.SerializationRate = 30; // 얼마나 자주 데이터를 직렬화 할 것인지.  (송수신 준비)
         
