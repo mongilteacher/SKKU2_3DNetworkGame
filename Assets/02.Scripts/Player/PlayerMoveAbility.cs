@@ -34,9 +34,11 @@ public class PlayerMoveAbility : MonoBehaviour
         Vector3 direction = new Vector3(h, 0, v);
         direction.Normalize();
         
+        direction = Camera.main.transform.TransformDirection(direction);
+
         _yVeocity -= GRAVITY * Time.deltaTime;
         direction.y = _yVeocity;
-
+        
         if (Input.GetKey(KeyCode.Space) && _characterController.isGrounded)
         {
             _yVeocity = JumpForce;
