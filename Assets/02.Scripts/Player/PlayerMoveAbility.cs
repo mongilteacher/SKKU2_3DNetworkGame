@@ -26,6 +26,7 @@ public class PlayerMoveAbility : PlayerAbility
 
     private void Update()
     {
+        // 내꺼가 아니면 건들지 않는다!
         if (!_owner.PhotonView.IsMine) return;
 
         float h = Input.GetAxis("Horizontal");

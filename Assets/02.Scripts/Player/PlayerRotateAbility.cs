@@ -11,6 +11,7 @@ public class PlayerRotateAbility : PlayerAbility
     private void Start()
     {
         // 이게 포톤에서 가장 놓치기 쉽고 버그를 많이 일으키는 요소
+        // 내꺼가 아니면 건들지 않는다!
         if (!_owner.PhotonView.IsMine) return;
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -21,6 +22,7 @@ public class PlayerRotateAbility : PlayerAbility
 
     private void Update()
     {
+        // 내꺼가 아니면 건들지 않는다!
         if (!_owner.PhotonView.IsMine) return;
 
         _mx += Input.GetAxis("Mouse X") * _owner.Stat.RotationSpeed * Time.deltaTime;
