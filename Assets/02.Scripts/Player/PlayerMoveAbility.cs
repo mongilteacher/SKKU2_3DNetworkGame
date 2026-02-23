@@ -10,7 +10,8 @@ public class PlayerMoveAbility : MonoBehaviour
     private float _yVeocity = 0f;
 
     private CharacterController _characterController;
-    
+    private Animator _animator;
+
     // 1. 중력을 적용하세요.
     // 2. 스페이스바를 누르면 점프하게 해주세요.
     // 3. 플레이어 이동을 카메라가 바라보는 방향 기준으로 해주세요.
@@ -23,6 +24,7 @@ public class PlayerMoveAbility : MonoBehaviour
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
+        _animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -35,6 +37,8 @@ public class PlayerMoveAbility : MonoBehaviour
         direction.Normalize();
         
         direction = Camera.main.transform.TransformDirection(direction);
+
+        _animator.SetFloat("Move", direction.magnitude);
 
         _yVeocity -= GRAVITY * Time.deltaTime;
         direction.y = _yVeocity;
