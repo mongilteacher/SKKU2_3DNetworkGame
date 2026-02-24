@@ -48,7 +48,17 @@ public class PlayerMoveAbility : PlayerAbility
         }
         
         direction.y = _yVeocity;
+
+        if (Input.GetKey(KeyCode.LeftShift) && _owner.Stat.Stamina > 0f)
+        {
+            _owner.Stat.Stamina -= _owner.Stat.Stamina * Time.deltaTime;
+            _characterController.Move(direction * Time.deltaTime * _owner.Stat.RunSpeed);
+        }
+        else
+        {
+            _owner.Stat.Stamina += _owner.Stat.Stamina * Time.deltaTime;
+            _characterController.Move(direction * Time.deltaTime * _owner.Stat.MoveSpeed);
+        }
         
-        _characterController.Move(direction * Time.deltaTime * _owner.Stat.MoveSpeed);
     }
 }
