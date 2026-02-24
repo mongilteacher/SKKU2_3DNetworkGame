@@ -19,5 +19,9 @@ public class PlayerNicknameAbility : PlayerAbility
         }
     }
 
-
+    private void Update()
+    {
+        // 빌보드
+        transform.forward = Camera.main.transform.forward;
+    }
 }
