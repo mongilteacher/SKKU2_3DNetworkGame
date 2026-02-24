@@ -7,6 +7,7 @@ public class PlayerStat
     public float Health;
     public float MaxStamina;
     public float Stamina;
+    public float Damage;
     public float MoveSpeed;
     public float RunSpeed;
     public float JumpPower;
