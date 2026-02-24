@@ -56,7 +56,7 @@ public class PlayerMoveAbility : PlayerAbility
         }
         else
         {
-            _owner.Stat.Stamina += _owner.Stat.Stamina * Time.deltaTime;
+            _owner.Stat.Stamina = Mathf.Min(_owner.Stat.MaxStamina, _owner.Stat.Stamina + Time.deltaTime);
             _characterController.Move(direction * Time.deltaTime * _owner.Stat.MoveSpeed);
         }
         

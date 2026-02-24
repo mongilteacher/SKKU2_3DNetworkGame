@@ -25,3 +25,6 @@ public class PlayerNicknameAbility : PlayerAbility
         transform.forward = Camera.main.transform.forward;
     }
 }
+
+
+
