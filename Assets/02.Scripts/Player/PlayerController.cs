@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour, IPunObservable, IDamageable
         PhotonView = GetComponent<PhotonView>();
     }
 
+    [PunRPC]
     public void TakeDamage(float damage)
     {
         Debug.Log("아프다");
@@ -41,6 +42,7 @@ public class PlayerController : MonoBehaviour, IPunObservable, IDamageable
             // 이 PhotonView의 데이터를 보내줘야 하는 상황
             stream.SendNext(Stat.Health);   // 현재 체력
             stream.SendNext(Stat.Stamina);  // 현재 스태미나
+            
         }
         else if (stream.IsReading)
         {
