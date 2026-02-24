@@ -24,17 +24,17 @@ public class PlayerController : MonoBehaviour, IPunObservable
         // 읽기/쓰기 모드
         if (stream.IsWriting)
         {
-            Debug.Log("전송중...");
+            // Debug.Log("전송중...");
             // 이 PhotonView의 데이터를 보내줘야 하는 상황
             stream.SendNext(Stat.Health);   // 현재 체력
             stream.SendNext(Stat.Stamina);  // 현재 스태미나
         }
         else if (stream.IsReading)
         {
-            Debug.Log("수신중...");
+            // Debug.Log("수신중...");
             // 이 PhotonView의 데이터를 받아야 하는 상황
-            Stat.Health  = (float)stream.ReceiveNext();
-            Stat.Stamina = (float)stream.ReceiveNext();
+            Stat.Health  = (float)stream.ReceiveNext();  // 준 순서대로 받는다.
+            Stat.Stamina = (float)stream.ReceiveNext();  // 준 순서대로 받는다.
         }
     }
     
