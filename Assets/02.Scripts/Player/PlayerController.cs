@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Photon.Pun;
+using Unity.VisualScripting;
 using UnityEngine;
 
 // 플레이어 대표로서 외부와의 소통 또는 어빌리티들을 관리하는 역할
@@ -16,15 +17,27 @@ public class PlayerController : MonoBehaviour, IPunObservable, IDamageable
     }
 
     [PunRPC]
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, int attackerActorNumber)
     {
+        if (Stat.Health <= 0) return;
+        
         Debug.Log("아프다");
+
+        // 여기서 히트이펙트 틀어주고 뭔가했따.
         
-        Stat.Health -= damage;
+
+        if (PhotonView.IsMine)
+        {
+            Stat.Health -= damage;
+
+            if (Stat.Health <= 0)
+            {
+                // 사망처리
+                PhotonRoomManager.Instance.OnPlayerDeath(attackerActorNumber);
+            }
+        }
         
-        Debug.Log(Stat.Health);
-        
-        // todo: 할게 많겠쬬?
+  
     }
     
     

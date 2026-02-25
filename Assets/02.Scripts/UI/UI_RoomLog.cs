@@ -10,18 +10,24 @@ public class UI_RoomLog : MonoBehaviour
     {
         _logText.text = "방에 입장했습니다.";
         
-        PhotonRoomManager.Instance.OnPlayerEnter += OnPlayerEnter;
-        PhotonRoomManager.Instance.OnPlayerLeft  += OnPlayerLeft;
+        PhotonRoomManager.Instance.OnPlayerEnter += PlayerEnterLog;
+        PhotonRoomManager.Instance.OnPlayerLeft  += PlayerLeftLog;
+        PhotonRoomManager.Instance.OnPlayerDeathed  += PlayerDeathLog;
     }
 
-    private void OnPlayerEnter(Player newPlayer)
+    private void PlayerEnterLog(Player newPlayer)
     {
         _logText.text += "\n" + $"{newPlayer.NickName}님이 입장하였습니다.";
     }
 
-    private void OnPlayerLeft(Player player)
+    private void PlayerLeftLog(Player player)
     {
         _logText.text += "\n" + $"{player.NickName}님이 퇴장하였습니다.";
 
+    }
+
+    private void PlayerDeathLog(string attackerNickname, string victimNickname)
+    {
+        _logText.text += "\n" + $"{attackerNickname}님이 {victimNickname}을 처치했습니다.";
     }
 }
