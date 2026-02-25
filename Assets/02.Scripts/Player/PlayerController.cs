@@ -29,15 +29,13 @@ public class PlayerController : MonoBehaviour, IPunObservable, IDamageable
         if (PhotonView.IsMine)
         {
             Stat.Health -= damage;
-
-            if (Stat.Health <= 0)
-            {
-                // 사망처리
-                PhotonRoomManager.Instance.OnPlayerDeath(attackerActorNumber);
-            }
         }
         
-  
+        if (Stat.Health <= 0)
+        {
+            // 사망처리
+            PhotonRoomManager.Instance.OnPlayerDeath(attackerActorNumber);
+        }
     }
     
     
