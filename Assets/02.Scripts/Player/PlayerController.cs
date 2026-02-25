@@ -25,11 +25,7 @@ public class PlayerController : MonoBehaviour, IPunObservable, IDamageable
 
         // 여기서 히트이펙트 틀어주고 뭔가했따.
         
-
-        if (PhotonView.IsMine)
-        {
-            Stat.Health -= damage;
-        }
+        Stat.Health -= damage;
         
         if (Stat.Health <= 0)
         {
