@@ -11,6 +11,12 @@ public class PlayerController : MonoBehaviour, IPunObservable, IDamageable
     public PhotonView PhotonView;
     public PlayerStat Stat;
 
+    public int Score = 0;
+
+    // 실습
+    // 1. 죽을때 점수 오브젝트를 3~5개 드랍한다.
+    // 2. 점수 오브젝트를 먹으면 하나당 100점이 오른다.
+    
     private void Awake()
     {
         PhotonView = GetComponent<PhotonView>();
@@ -31,6 +37,22 @@ public class PlayerController : MonoBehaviour, IPunObservable, IDamageable
         {
             // 사망처리
             PhotonRoomManager.Instance.OnPlayerDeath(attackerActorNumber);
+
+            if (PhotonView.IsMine)
+            {
+                // 아이템 생성
+                MakeScoreItems();
+            }
+        }
+    }
+
+    private void MakeScoreItems()
+    {
+        int randomCount = UnityEngine.Random.Range(3, 5);
+        
+        for (int i = 0; i < randomCount; i++)
+        {
+            PhotonNetwork.Instantiate("ScoreItem", transform.position, Quaternion.identity);
         }
     }
     
