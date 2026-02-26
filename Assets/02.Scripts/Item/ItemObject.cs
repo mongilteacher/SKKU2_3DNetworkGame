@@ -1,17 +1,17 @@
 using Photon.Pun;
 using UnityEngine;
 
-public class ItemObject : MonoBehaviour
+public class ItemObject : MonoBehaviourPun
 {
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             Debug.Log("아이템 충돌!");
             
-            collision.gameObject.GetComponent<PlayerController>().Score += 100;
+            other.GetComponent<PlayerController>().Score += 100;
             
-            PhotonNetwork.Destroy(gameObject);
+            ItemObjectFactory.Instance.RequestDelete(photonView.ViewID);
         }
     }
 }

@@ -39,4 +39,26 @@ public class ItemObjectFactory : MonoBehaviour
             PhotonNetwork.InstantiateRoomObject("ScoreItem", makePosition, Quaternion.identity);
         }
     }
+
+
+    public void RequestDelete(int viewId)
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            Delete(viewId);
+        }
+        else
+        {
+            _photonView.RPC(nameof(Delete), RpcTarget.MasterClient, viewId);
+        }
+    }
+    
+    [PunRPC]
+    private void Delete(int viewId)
+    {
+        GameObject objectToDelete = PhotonView.Find(viewId)?.gameObject;
+        if (objectToDelete == null) return;
+        
+        PhotonNetwork.Destroy(objectToDelete);
+    }
 }
