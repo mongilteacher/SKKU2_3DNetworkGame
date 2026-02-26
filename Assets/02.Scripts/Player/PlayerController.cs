@@ -37,7 +37,11 @@ public class PlayerController : MonoBehaviour, IPunObservable, IDamageable
         {
             // 사망처리
             PhotonRoomManager.Instance.OnPlayerDeath(attackerActorNumber);
+            
+            // 콜라이더 비활성화
+            GetComponent<CharacterController>().enabled = false;
 
+            
             if (PhotonView.IsMine)
             {
                 // 아이템 생성
