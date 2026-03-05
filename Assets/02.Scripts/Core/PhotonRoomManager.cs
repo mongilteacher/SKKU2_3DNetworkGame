@@ -27,7 +27,16 @@ public class PhotonRoomManager : MonoBehaviourPunCallbacks
     {
         _room = PhotonNetwork.CurrentRoom;
 
-        SceneManager.LoadScene("GameScene");
+        // [X] SceneManager.LoadScene("GameScene");
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.LoadLevel("GameScene");
+        }
+        else
+        {
+            // 아무것도 하지 않아도.. 자동으로 방장이 있는 씬으로 옮겨진다.
+        }
         
         OnDataChanged?.Invoke();
     }
